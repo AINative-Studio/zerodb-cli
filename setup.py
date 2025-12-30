@@ -60,7 +60,6 @@ setup(
     project_urls={
         "Homepage": "https://www.ainative.studio",
         "Documentation": "https://docs.ainative.studio/zerodb-local",
-        "Support": "mailto:hello@ainative.studio",
     },
     python_requires=">=3.9",
     install_requires=[
