@@ -2,10 +2,19 @@
 
 Command-line interface for managing ZeroDB Local environment and syncing with ZeroDB Cloud.
 
+> **Looking for the full ZeroDB Local runtime?** See [zerodb-local](https://github.com/AINative-Studio/zerodb-local) — the standalone Python package with lite mode (SQLite + FAISS, no Docker) and full mode (PostgreSQL + Qdrant + MinIO).
+
 ## Installation
 
 ```bash
 pip install zerodb-cli
+```
+
+Or install the full runtime (includes the CLI):
+
+```bash
+pip install zerodb-local
+zerodb serve
 ```
 
 ## Quick Start
@@ -112,55 +121,18 @@ When conflicts are detected during sync, you can choose how to resolve them:
 - **newest-wins** - Use the version with the latest timestamp
 - **manual** - Interactively choose for each conflict
 
-Example:
-
-```bash
-zerodb sync apply --strategy=local-wins
-```
-
-### Interactive Conflict UI
-
-When using manual conflict resolution, you'll see an interactive prompt:
-
-```
-⚠️  Conflict Detected
-
-Table: users
-Row ID: 550e8400-e29b-41d4-a716-446655440000
-
-Local:  {"name": "Alice Smith", "email": "alice@local.com"}
-Cloud:  {"name": "Alice Johnson", "email": "alice@cloud.com"}
-
-Choose resolution:
-  1) Use local version
-  2) Use cloud version
-  3) Merge manually
-  4) Skip this conflict
->
-```
-
-### Progress Indicators
-
-Long-running operations show progress bars:
-
-```
-Syncing push... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
-```
-
-### Rollback on Error
-
-If sync fails, all changes are automatically rolled back to prevent partial sync states.
-
-## Configuration
+### Configuration
 
 Configuration is stored in `~/.zerodb/`:
 
 - `config.json` - CLI configuration
 - `credentials.json` - Cloud credentials (JWT tokens)
 
-## Documentation
+## Related
 
-For comprehensive documentation, visit: https://docs.ainative.studio/zerodb-local
+- [zerodb-local](https://github.com/AINative-Studio/zerodb-local) — full standalone runtime (lite + full modes, Tauri desktop)
+- [ZeroDB Cloud](https://zerodb.ai) — managed cloud service
+- [Documentation](https://docs.ainative.studio/zerodb-local)
 
 ## Support
 
